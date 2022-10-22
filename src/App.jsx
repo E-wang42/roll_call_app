@@ -3,19 +3,24 @@ import Card from "./components/Card/Card";
 import Search from "./components/Search/Search";
 
 function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    async function getUsers() {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await res.json();
-      // console.log(data);
-      setUser(data.name);
-    }
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   async function getUsers() {
+  //     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  //     const data = await res.json();
+  //     setUser(data);
+  //   }
+  //   getUsers();
+  // }, []);
 
-  return <div className="app">App Goes Here</div>;
+  return (
+    <section className="application">
+      <h1>cat call</h1>
+      <Search />
+      <Card />
+    </section>
+  );
 }
 
 export default App;
