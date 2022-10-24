@@ -1,24 +1,33 @@
 import { useState, useEffect } from "react";
-import Card from "./components/Card/Card";
+import CardList from "./components/CardList/CardList";
 import Search from "./components/Search/Search";
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [input, setInput] = useState("");
+  const [catsInfo, setCatsInfo] = useState([]);
 
-  // useEffect(() => {
-  //   async function getUsers() {
-  //     const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  //     const data = await res.json();
-  //     setUser(data);
-  //   }
-  //   getUsers();
-  // }, []);
+  useEffect(() => {
+    const getUsers = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await res.json();
+      setCatsInfo(data);
+    };
+    getUsers().catch(console.error);
+  }, []);
+
+  const filteredCats = catsInfo.filter((cat) => {
+    return cat.name.toLocaleLowerCase().includes(input);
+  });
+
+  const handleChange = (e) => {
+    const inputChange = e.target.value.toLocaleLowerCase();
+    setInput(inputChange);
+  };
 
   return (
     <section className="application">
       <h1>cat call</h1>
-      <Search />
-      <Card />
+      <Search handleChange={handleChange} />
     </section>
   );
 }

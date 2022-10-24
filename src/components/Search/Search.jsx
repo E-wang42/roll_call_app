@@ -1,21 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./Search.css";
 
-function Search() {
-  const [value, setValue] = useState("");
+function Search(props) {
   const inputRef = useRef(null);
-
-  // function focusInput() {
-  //   const ref = useRef(null);
-
-  //   useEffect(() => {
-  //     ref.current.focus();
-  //   }, []);
-  // }
-
-  function inputEvent(e) {
-    setValue(e.target.value);
-  }
 
   function clearInput() {
     inputRef.current.value = "";
@@ -27,9 +14,8 @@ function Search() {
         className="container__input--field"
         type="search"
         placeholder="Search Cats"
-        value={value}
         name="text"
-        onChange={inputEvent}
+        onChange={props.handleChange}
         ref={inputRef}
       />
       <button onClick={clearInput} className="input__button">
