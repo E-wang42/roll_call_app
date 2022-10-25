@@ -32,6 +32,7 @@ function App() {
     <section className="application">
       <h1>cat call</h1>
       <Search handleChange={handleChange} />
+      <CardList content={catsInfo} />
     </section>
   );
 }

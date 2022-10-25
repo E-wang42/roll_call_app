@@ -1,0 +1,14 @@
+img {
+  width: 12rem;
+  align-self: center;
+}
+
+.card__container {
+  width: 18rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(21, 14, 51, 0.356);
+  backdrop-filter: blur(3rem);
+  border-radius: 0.5rem;
+}
