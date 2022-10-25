@@ -15,9 +15,13 @@ function App() {
     getUsers().catch(console.error);
   }, []);
 
-  const filteredCats = catsInfo.filter((cat) => {
-    return cat.name.toLocaleLowerCase().includes(input);
+  catsInfo.forEach((cat) => {
+    return cat.name;
   });
+
+  // const filteredCats = catsInfo.filter((cat) => {
+  //   return cat.name.toLocaleLowerCase().includes(input);
+  // });
 
   const handleChange = (e) => {
     const inputChange = e.target.value.toLocaleLowerCase();
