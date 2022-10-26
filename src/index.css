@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
 *,
 *::before,
 *::after {
@@ -41,10 +43,27 @@ main {
   padding-block: 0.5rem;
 }
 
+.heading__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  filter: drop-shadow(5px 5px 5px hotpink);
+}
+
+.heading__img {
+  width: 4rem;
+  margin-top: -1rem;
+}
+
 h1 {
   text-align: center;
   text-transform: uppercase;
   margin: 2rem 0 3rem 0;
+  font-size: 4rem;
+  letter-spacing: 0.8rem;
+  color: rgba(24, 24, 24, 0.945);
+  font-family: "Luckiest Guy", cursive, sans-serif;
 }
 
 .cat__list {

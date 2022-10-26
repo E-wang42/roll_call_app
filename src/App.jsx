@@ -33,7 +33,15 @@ function App() {
 
   return (
     <section className="application">
-      <h1>cat call</h1>
+      <div className="heading__container">
+        <h1>cat</h1>
+        <img
+          className="heading__img"
+          src="https://i.ibb.co/kq1jb52/paw-transparent.png"
+          alt=""
+        />
+        <h1>call</h1>
+      </div>
       <Search
         handleChange={handleChange}
         inputValue={input}
