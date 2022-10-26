@@ -1,26 +1,17 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./Search.css";
 
 function Search(props) {
-  const inputRef = useRef(null);
-
-  function clearInput() {
-    inputRef.current.value = "";
-  }
-
   return (
     <div className="container__input">
       <input
         className="container__input--field"
         type="search"
-        placeholder="Search Cats"
+        placeholder={props.placeholderText}
         name="text"
+        value={props.inputValue}
         onChange={props.handleChange}
-        ref={inputRef}
       />
-      <button onClick={clearInput} className="input__button">
-        &times;
-      </button>
     </div>
   );
 }

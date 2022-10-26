@@ -1,44 +1,45 @@
 import { useState, useEffect } from "react";
 // import CardList from "./components/CardList/CardList";
-// import Search from "./components/Search/Search";
+import Search from "./components/Search/Search";
 
 function App() {
   const [input, setInput] = useState("");
   const [catsInfo, setCatsInfo] = useState([]);
-  const [filteredCats, setFilteredCats] = useState(catsInfo);
+
+  const getUsers = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
+    setCatsInfo(data);
+  };
 
   useEffect(() => {
-    const getUsers = async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await res.json();
-      setCatsInfo(data);
-    };
+    getUsers();
     getUsers().catch(console.error);
   }, []);
 
-  // catsInfo.map((catName, imageID, email) => {
-  //   return;
-  // });
-
-  useEffect(() => {
-    const newFilteredCats = catsInfo.filter((cat) => {
-      return cat.name.toLocaleLowerCase().includes(input);
-    });
-
-    setFilteredCats(newFilteredCats);
-  }, [catsInfo, input]);
-
-  const handleChange = (e) => {
-    const inputChange = e.target.value.toLocaleLowerCase();
+  function handleChange(e) {
+    const inputChange = e.target.value;
     setInput(inputChange);
-  };
+
+    if (inputChange) {
+      const filteredCats = catsInfo.filter((cat) => {
+        return cat.name.toLocaleLowerCase().includes(input.toLocaleLowerCase());
+      });
+      setCatsInfo(filteredCats);
+    } else {
+      setCatsInfo(getUsers);
+    }
+  }
 
   return (
     <section className="application">
       <h1>cat call</h1>
-      {/* <Search handleChange={handleChange} /> */}
-      {/* <CardList content={filteredCats} />
-       */}
+      <Search
+        handleChange={handleChange}
+        inputValue={input}
+        placeholderText="Search Cats"
+      />
+      {/* <CardList content={filteredCats} /> */}
       <>
         {catsInfo.length > 0 && (
           <div className="cat__list">
