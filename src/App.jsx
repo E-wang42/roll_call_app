@@ -37,7 +37,7 @@ function App() {
         <h1>cat</h1>
         <img
           className="heading__img"
-          src="https://i.ibb.co/kq1jb52/paw-transparent.png"
+          src="https://i.ibb.co/74VCLrv/paw-removebg-preview.png"
           alt=""
         />
         <h1>call</h1>
@@ -55,7 +55,9 @@ function App() {
               <div key={cat.id} className="cat__card">
                 <h2>{cat.name}</h2>
                 <img
-                  src={`https://robohash.org/${cat.id}?set=set4&size=180x180`}
+                  src={`https://robohash.org/${Math.floor(
+                    (Math.random() + 4.2) * cat.id
+                  )}?set=set4&size=180x180`}
                   alt={cat.name}
                 />
                 <p>{cat.email}</p>
